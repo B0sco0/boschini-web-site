@@ -3,166 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sito in Lavorazione - Work in Progress</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome per le icone -->
+    <title>Portfolio Progetti | 5ª Superiore</title>
+    <!-- Google Fonts & FontAwesome per le icone -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-gradient: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+            --badge-bg: #1f6feb33;
+            --badge-text: #58a6ff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            flex-direction: column;
         }
 
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px 30px;
-            border-radius: 20px;
+        /* HEADER & HERO */
+        header {
+            background: linear-gradient(180deg, rgba(22,27,34,0.8) 0%, rgba(13,17,23,0) 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 1rem;
             text-align: center;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .icon-container {
-            font-size: 64px;
-            color: #ffc107;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            margin-bottom: 1rem;
+            object-fit: cover;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: #e0e0e0;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .progress-bar {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            height: 10px;
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            width: 65%; /* Modifica la percentuale a seconda dello stato dei lavori */
-            height: 100%;
-            background: #ffc107;
-            border-radius: 10px;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .social-icons a {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.2);
+            font-size: 2.2rem;
             color: #ffffff;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.3s;
+            margin-bottom: 0.5rem;
         }
 
-        .social-icons a:hover {
-            background: #ffc107;
-            color: #1e3c72;
-            transform: translateY(-3px);
+        h1 span {
+            color: var(--accent);
         }
 
-        .footer-note {
-            margin-top: 35px;
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .prof-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+
+        /* MAIN CONTENT */
+        main {
+            max-width: 1000px;
+            width: 90%;
+            margin: 2rem auto;
+            flex: 1;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 10px 15px 10px 40px;
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .counter {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* GRID PROGETTI */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        /* Tech Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* Action Buttons */
+        .project-actions {
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 6px;
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: opacity 0.2s;
         }
 
-        /* Responsive per smartphone */
-        @media (max-width: 480px) {
-            h1 { font-size: 2rem; }
-            p { font-size: 1rem; }
-            .container { padding: 30px 20px; }
+        .btn-github {
+            background-color: #21262d;
+            color: #ffffff;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-github:hover {
+            background-color: #30363d;
+        }
+
+        .btn-download {
+            background-color: #238636;
+            color: #ffffff;
+        }
+
+        .btn-download:hover {
+            background-color: #2ea043;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .controls { flex-direction: column; align-items: stretch; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Icona ingranaggio in movimento -->
-        <div class="icon-container">
-            <i class="fa-solid fa-gears"></i>
+    <header>
+        <div class="hero-container">
+            <!-- Sostituisci l'immagine con la tua foto o un'icona -->
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Avatar" class="avatar">
+            <h1>Portfolio Scolastico di <span>[Tuo Nome e Cognome]</span></h1>
+            <p class="subtitle">Classe 5ª [Tua Sezione es. A/B] – Indirizzo Informatica & Telecomunicazioni</p>
+            <div class="prof-badge">
+                <i class="fa-solid fa-chalkboard-user"></i> Spazio riservato per la revisione progetti del docente
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="controls">
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Cerca progetto per nome o tecnologia..." onkeyup="filterProjects()">
+            </div>
+            <div class="counter" id="projectCount">Caricamento progetti...</div>
         </div>
 
-        <h1>Sito in Costruzione</h1>
-        <p>Stiamo lavorando duramente per portarti qualcosa di eccezionale. Il nostro nuovo sito web sarà online molto presto. Torna a trovarci!</p>
+        <!-- GRIGLIA PROGETTI: Aggiungi qui sotto i tuoi progetti -->
+        <div class="projects-grid" id="projectsGrid">
 
-        <!-- Barra di avanzamento stimata -->
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
+            <!-- PROGETTO 1 (Esempio) -->
+            <div class="project-card" data-title="gestionale negozio java" data-tech="java mysql oop">
+                <div>
+                    <div class="project-header">
+                        <span class="project-title">Gestionale Negozio OOP</span>
+                        <i class="fa-brands fa-java" style="color: #f89820; font-size: 1.3rem;"></i>
+                    </div>
+                    <p class="project-desc">Applicazione desktop in Java con interfaccia grafica e database MySQL per la gestione di magazzino e vendite.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Swing</span>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/TuoUsername/tuo-repo-1" target="_blank" class="btn btn-github">
+                        <i class="fa-brands fa-github"></i> Codice
+                    </a>
+                    <a href="https://github.com/TuoUsername/tuo-repo-1/archive/refs/heads/main.zip" class="btn btn-download">
+                        <i class="fa-solid fa-download"></i> Zip
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROGETTO 2 (Esempio) -->
+            <div class="project-card" data-title="sito e-commerce php" data-tech="php html css javascript">
+                <div>
+                    <div class="project-header">
+                        <span class="project-title">E-commerce Scolastico</span>
+                        <i class="fa-brands fa-php" style="color: #777bb3; font-size: 1.3rem;"></i>
+                    </div>
+                    <p class="project-desc">Sito web dinamico e-commerce realizzato per il progetto d'esame con gestione carrello e area amministrativa.</p>
+                    <div class="tech-tags">
+                        <span class="tag">PHP</span>
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/TuoUsername/tuo-repo-2" target="_blank" class="btn btn-github">
+                        <i class="fa-brands fa-github"></i> Codice
+                    </a>
+                    <a href="https://github.com/TuoUsername/tuo-repo-2/archive/refs/heads/main.zip" class="btn btn-download">
+                        <i class="fa-solid fa-download"></i> Zip
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROGETTO 3 (Esempio) -->
+            <div class="project-card" data-title="api meteo python" data-tech="python api json">
+                <div>
+                    <div class="project-header">
+                        <span class="project-title">Python Weather Fetcher</span>
+                        <i class="fa-brands fa-python" style="color: #3776ab; font-size: 1.3rem;"></i>
+                    </div>
+                    <p class="project-desc">Script in Python che interroga un'API REST pubblica di previsioni meteo e restituisce i dati formattati.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">REST API</span>
+                        <span class="tag">JSON</span>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <a href="https://github.com/TuoUsername/tuo-repo-3" target="_blank" class="btn btn-github">
+                        <i class="fa-brands fa-github"></i> Codice
+                    </a>
+                    <a href="https://github.com/TuoUsername/tuo-repo-3/archive/refs/heads/main.zip" class="btn btn-download">
+                        <i class="fa-solid fa-download"></i> Zip
+                    </a>
+                </div>
+            </div>
+
         </div>
+    </main>
 
-        <!-- Se vuoi aggiungere i tuoi link social (sostituisci il # con i tuoi link) -->
-        <div class="social-icons">
-            <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="mailto:tua-email@tuodominio.it" title="Contattaci via Email"><i class="fa-solid fa-envelope"></i></a>
-        </div>
+    <footer>
+        <p>&copy; 2026 [Tuo Nome e Cognome] - Realizzato per i progetti di Quinta Superiore via GitHub Pages.</p>
+    </footer>
 
-        <div class="footer-note">
-            &copy; 2026 - Powered by Altervista
-        </div>
-    </div>
+    <!-- Script per la ricerca rapida in tempo reale -->
+    <script>
+        function filterProjects() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('project-card');
+            let visibleCount = 0;
 
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getAttribute('data-title');
+                let tech = cards[i].getAttribute('data-tech');
+                
+                if (title.includes(input) || tech.includes(input)) {
+                    cards[i].style.display = "flex";
+                    visibleCount++;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+            document.getElementById('projectCount').innerText = `Mostrati ${visibleCount} di ${cards.length} progetti`;
+        }
+
+        // Inizializza il contatore all'avvio
+        window.onload = function() {
+            let cards = document.getElementsByClassName('project-card');
+            document.getElementById('projectCount').innerText = `Mostrati ${cards.length} di ${cards.length} progetti`;
+        }
+    </script>
 </body>
 </html>
